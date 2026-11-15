@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local workspace for reviewing suspicious messages, links, and security logs.">
+  <title>Cyber AI Agent · Security workspace</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a href="/" class="brand"><img src="/favicon.svg" alt="" width="38" height="38"><span>CYBER<span class="brand-light"> / AI</span></span></a>
+    <div class="workspace-label">PERSONAL WORKSPACE</div>
+    <a href="#workspace" class="nav-item current"><span aria-hidden="true">⌘</span> Analysis workspace</a>
+    <a href="#how-it-works" class="nav-item"><span aria-hidden="true">◎</span> How it works</a>
+    <div class="sidebar-bottom"><span class="eyebrow">CYBER SECURITY PORTFOLIO</span><p>Built for a closer look.</p><span class="version">v1.0 · Local application</span></div>
+  </aside>
+  <main id="workspace">
+    <header class="topbar"><span>WORKSPACE <span class="slash">/</span> <strong>THREAT TRIAGE</strong></span><span class="connection" id="connection"><i></i> Connecting</span></header>
+    <section class="intro">
+      <div class="eyebrow"><span class="tiny-square"></span> YOUR SECURITY ANALYSIS DESK</div>
+      <h1>A second look.<br><span>A clearer next step.</span></h1>
+      <p>Turn suspicious messages, links, and logs into signals you can act on.</p>
+      <div class="capabilities"><span>01 <b>Inspect evidence</b></span><span>02 <b>Understand the risk</b></span><span>03 <b>Plan your response</b></span></div>
+    </section>
+    <div class="analysis-grid">
+      <section class="panel input-panel" aria-labelledby="input-heading">
+        <div class="panel-heading"><h2 id="input-heading">New analysis</h2><span class="pill">INPUT</span></div>
+        <form id="analysis-form">
+          <fieldset class="modes"><legend class="sr-only">Content type</legend>
+            <label><input type="radio" name="mode" value="message" checked><span>Message</span></label>
+            <label><input type="radio" name="mode" value="url"><span>URL / link</span></label>
+            <label><input type="radio" name="mode" value="logs"><span>Security logs</span></label>
+          </fieldset>
+          <div class="input-caption"><label for="content" id="content-label">MESSAGE CONTENT</label><button type="button" class="text-button" id="sample">Load sample <span aria-hidden="true">↙</span></button></div>
+          <textarea id="content" maxlength="24000" required spellcheck="false" placeholder="Paste a suspicious email or message here…" aria-describedby="input-help character-count"></textarea>
+          <div class="editor-footer"><span id="input-help">Text stays in memory during analysis.</span><span id="character-count">0 / 24,000</span></div>
+          <div class="ai-option"><label for="use-ai"><input id="use-ai" type="checkbox" disabled><span><strong>AI summary</strong><small id="ai-help">Checking availability…</small></span></label><span class="spark" aria-hidden="true">✧</span></div>
+          <div class="form-actions"><button type="button" class="secondary-button" id="clear">Clear</button><button type="submit" class="primary-button" id="analyze"><span id="analyze-label">Analyze content</span><span aria-hidden="true">↗</span></button></div>
+          <p class="error" id="error" role="alert" hidden></p>
+        </form>
+        <div class="input-note"><span aria-hidden="true">◇</span> Links are inspected as text. Nothing is opened or executed.</div>
+      </section>
+      <section class="panel result-panel" aria-labelledby="result-heading" aria-busy="false">
+        <div class="panel-heading"><h2 id="result-heading">Analysis report</h2><button type="button" class="text-button" id="export" disabled>Export JSON <span aria-hidden="true">↓</span></button></div>
+        <div class="empty-state" id="empty-state"><div class="radar" aria-hidden="true"><div></div><span>+</span></div><span class="eyebrow">READY WHEN YOU ARE</span><h3>Every signal starts<br>with a closer look.</h3><p>Add content or load a sample.<br>Your findings will appear here.</p><span class="empty-tag">EVIDENCE FIRST. ALWAYS.</span></div>
+        <div id="report" hidden>
+          <div class="risk-overview"><div><span class="eyebrow">RULE-BASED SIGNAL LEVEL</span><h3 id="risk-label"></h3><p id="summary"></p></div><div class="score"><strong id="score"></strong><span>/ 100</span></div></div>
+          <div class="risk-track"><span id="risk-fill"></span></div>
+          <p class="report-caveat">A signal score, not a probability or a safety verdict.</p>
+          <div class="report-stats"><div><strong id="finding-count">0</strong><span>Signals</span></div><div><strong id="indicator-count">0</strong><span>Indicators</span></div><div><strong id="report-mode"></strong><span>Analysis type</span></div></div>
+          <div class="report-section"><h4>What stood out</h4><div id="findings"></div></div>
+          <div class="report-section" id="indicators-section" hidden><h4>Extracted indicators</h4><div id="indicators"></div></div>
+          <div class="report-section" id="actions-section" hidden><h4>Recommended next steps</h4><ol id="actions"></ol></div>
+          <div class="ai-summary" id="ai-section" hidden><span class="eyebrow">✧ AI SUMMARY</span><p id="ai-text"></p></div>
+          <div class="report-footer"><span>LOCAL RULE ENGINE</span><time id="report-time"></time></div>
+        </div>
+        <p class="sr-only" id="status-announcement" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+    <section class="how-it-works" id="how-it-works"><div><span class="eyebrow">A SMALL TOOL. A PRACTICAL WORKFLOW.</span><h2>From uncertainty to an informed next step.</h2></div><div class="how-cards"><article><span>01 / INSPECT</span><h3>Bring the evidence.</h3><p>Paste a message, HTTP link, or plain-text security log. Samples are included.</p></article><article><span>02 / REVIEW</span><h3>See what stands out.</h3><p>Review matched signals and their evidence. Add an AI summary when configured.</p></article><article><span>03 / RESPOND</span><h3>Take the next step.</h3><p>Use the suggested checks and export a report to support your investigation.</p></article></div></section>
+    <footer class="page-footer"><span>CYBER AI AGENT <span class="slash">/</span> CYBER SECURITY PORTFOLIO</span><span>No account. No saved history.</span></footer>
+  </main>
+</body>
+</html>
